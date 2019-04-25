@@ -24,7 +24,9 @@ public class Translator {
         map.put('t',t);
 
         root.setLeft(e);
+        e.setParent(root);
         root.setRight(t);
+        t.setParent(root);
 
 
         Node i = new Node('i');
@@ -39,10 +41,14 @@ public class Translator {
 
 
         e.setLeft(i);
+        i.setParent(e);
         e.setRight(a);
+        a.setParent(e);
 
         t.setLeft(n);
+        n.setParent(t);
         t.setRight(m);
+        m.setParent(t);
 
         Node s = new Node('s');
         map.put('s',s);
@@ -65,16 +71,24 @@ public class Translator {
         map.put('o',o);
 
         i.setLeft(s);
+        s.setParent(i);
         i.setRight(u);
+        u.setParent(i);
 
         a.setLeft(r);
+        r.setParent(a);
         a.setRight(w);
+        w.setParent(a);
 
         n.setLeft(d);
+        d.setParent(n);
         n.setRight(k);
+        k.setParent(n);
 
         m.setLeft(g);
+        g.setParent(m);
         m.setRight(o);
+        o.setParent(m);
 
         Node h = new Node('h');
         map.put('h',h);
@@ -113,28 +127,44 @@ public class Translator {
         Node or = new Node(' ');
 
         s.setLeft(h);
+        h.setParent(s);
         s.setRight(v);
+        v.setParent(s);
 
         u.setLeft(f);
+        f.setParent(u);
         u.setRight(ur);
+        ur.setParent(u);
 
         r.setLeft(l);
+        l.setParent(r);
         r.setRight(rr);
+        rr.setParent(r);
 
         w.setLeft(p);
+        p.setParent(w);
         w.setRight(j);
+        j.setParent(w);
 
         d.setLeft(b);
+        b.setParent(d);
         d.setRight(x);
+        x.setParent(d);
 
         k.setLeft(c);
+        c.setParent(k);
         k.setRight(y);
+        y.setParent(k);
 
         g.setLeft(z);
+        z.setParent(g);
         g.setRight(q);
+        q.setParent(g);
 
         o.setLeft(ol);
+        ol.setParent(o);
         o.setRight(or);
+        or.setParent(o);
 
 
         Node _5 = new Node('5');
@@ -175,27 +205,40 @@ public class Translator {
         map.put('0', _0);
 
         h.setLeft(_5);
+        _5.setParent(h);
         h.setRight(_4);
+        _4.setParent(h);
 
         v.setRight(_3);
+        _3.setParent(v);
 
         ur.setRight(_2);
+        _2.setParent(ur);
 
         rr.setLeft(plus);
+        plus.setParent(rr);
 
         j.setRight(_1);
+        _1.setParent(j);
 
         b.setLeft(_6);
+        _6.setParent(b);
         b.setRight(eq);
+        eq.setParent(b);
 
         x.setLeft(back);
+        back.setParent(x);
 
         z.setLeft(_7);
+        _7.setParent(z);
 
         ol.setLeft(_8);
+        _8.setParent(ol);
 
         or.setLeft(_9);
+        _9.setParent(or);
         or.setRight(_0);
+        _0.setParent(or);
     }
 
 
@@ -221,7 +264,28 @@ public class Translator {
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public String charToMorse(char c) {
-        return " ";
+        Node cur_node;
+        cur_node = this.map.get(c);
+        StringBuilder sb = new StringBuilder();
+
+
+        while (cur_node!=this.root){
+            char cur_val = cur_node.getValue();
+            Node new_node = cur_node.getParent();
+
+            if (new_node.getLeft() != null){
+                if (new_node.getLeft() == cur_node) {
+                    sb.append('.');
+                } else {
+                    sb.append('-');
+                }
+
+            } else {
+                sb.append('-');
+            }
+            cur_node = new_node;
+        }
+        return sb.reverse().toString();
     }
 
 
