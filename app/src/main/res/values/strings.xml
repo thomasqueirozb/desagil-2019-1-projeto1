@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Projeto1</string>
+    <string name="title_activity_mensagens__predefinidas">Mensagens frequentes</string>
+    <string name="msg1">Mensagem1</string>
+    <string name="msg2">Mensagem2</string>
+    <string name="msg3">Mensagem3</string>
+    <string name="msg4">Mensagem4</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="msgs">Mensagens pré-definidas</string>
 </resources>
