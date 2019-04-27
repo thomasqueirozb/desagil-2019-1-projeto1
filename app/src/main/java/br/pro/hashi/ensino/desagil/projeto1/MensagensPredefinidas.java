@@ -7,19 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 
-public class Mensagens_Predefinidas extends AppCompatActivity {
-    private String[] predef_msgs = {
-            "Mensagem",
-            "Pre",
-            "Definida",
-            "Eu",
-            "Sou",
-            "Muito",
-            "Bonito"
-    };
+public class MensagensPredefinidas extends AppCompatActivity {
+    private String[] predef_msgs;
 
     private TextView[] textViews;
 
@@ -39,8 +36,6 @@ public class Mensagens_Predefinidas extends AppCompatActivity {
             public void onClick(View view) {
                 msgsIdx -= 1;
                 setText();
-
-                // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
@@ -50,10 +45,43 @@ public class Mensagens_Predefinidas extends AppCompatActivity {
             public void onClick(View view) {
                 msgsIdx += 1;
                 setText();
-
-                // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
+
+
+        LinkedList<String> tempLines = new LinkedList<>();
+
+        // Falta criar o arquivo se não existir
+        InputStream is = this.getResources().openRawResource(R.raw.mensagenspredefinidas);
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+        if (is != null) {
+            try {
+                String line;
+                while ((line = br.readLine()) != null) {
+                   tempLines.add(line);
+                }
+                is.close();
+            } catch (IOException e) {
+              System.err.format("IOException: %s%n", e);
+            }
+        }
+
+        System.out.println(".");
+        System.out.println("\\");
+        System.out.println("-");
+        System.out.println("+");
+        System.out.println("=");
+        System.out.println("Lido");
+        System.out.println(".");
+        System.out.println("\\");
+        System.out.println("-");
+        System.out.println("+");
+        System.out.println("=");
+        System.out.println(".");
+        predef_msgs = new String[tempLines.size()];
+        predef_msgs = (String[]) tempLines.toArray(predef_msgs);
+
 
 
         this.textViews = new TextView[3];
@@ -72,7 +100,8 @@ public class Mensagens_Predefinidas extends AppCompatActivity {
         if (this.msgsIdx < 0)
             this.msgsIdx += this.predef_msgs.length;
 
-        this.msgsIdx %= this.predef_msgs.length;
+        this.msgsIdx = this.msgsIdx % this.predef_msgs.length;
+
 
         for (int i=0; i<3; i++) {
             this.textViews[i].setText(this.predef_msgs[(this.msgsIdx + i) % this.predef_msgs.length]);

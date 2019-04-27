@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void sendMessage(View view){
-        Intent intent = new Intent(MainActivity.this, Mensagens_Predefinidas.class);
+        Intent intent = new Intent(MainActivity.this, MensagensPredefinidas.class);
         startActivity(intent);
     }
 }
