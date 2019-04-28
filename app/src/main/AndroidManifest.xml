@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Mensagens_Predefinidas"
+            android:name=".MensagensPredefinidas"
             android:label="@string/title_activity_mensagens__predefinidas"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
