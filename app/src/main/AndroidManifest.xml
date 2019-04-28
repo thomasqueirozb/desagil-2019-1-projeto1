@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ComporNovaMensagemPreDefinida"
+            android:label="@string/title_activity_compor_nova_mensagem_pre_definida"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,8 +26,7 @@
         <activity
             android:name=".Mensagens_Predefinidas"
             android:label="@string/title_activity_mensagens__predefinidas"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

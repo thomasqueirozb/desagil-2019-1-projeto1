@@ -7,4 +7,6 @@
     <string name="msg4">Mensagem4</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="msgs">Mensagens pré-definidas</string>
+    <string name="title_activity_compor_nova_mensagem_pre_definida">ComporNovaMensagemPreDefinida
+    </string>
 </resources>
