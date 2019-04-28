@@ -2,7 +2,6 @@ package br.pro.hashi.ensino.desagil.projeto1;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,15 +10,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 
 public class MensagensPredefinidas extends AppCompatActivity {
     private String[] predef_msgs;
-
     private TextView[] textViews;
-
     private int msgsIdx;
 
 
@@ -72,9 +67,7 @@ public class MensagensPredefinidas extends AppCompatActivity {
             tempLines.add(" ");
         }
         predef_msgs = new String[tempLines.size()];
-        predef_msgs = (String[]) tempLines.toArray(predef_msgs);
-
-
+        predef_msgs = tempLines.toArray(predef_msgs);
 
         this.textViews = new TextView[3];
 
@@ -93,7 +86,6 @@ public class MensagensPredefinidas extends AppCompatActivity {
             this.msgsIdx += this.predef_msgs.length;
 
         this.msgsIdx = this.msgsIdx % this.predef_msgs.length;
-
 
         for (int i=0; i<3; i++) {
             this.textViews[i].setText(this.predef_msgs[(this.msgsIdx + i) % this.predef_msgs.length]);
