@@ -67,18 +67,10 @@ public class MensagensPredefinidas extends AppCompatActivity {
             }
         }
 
-        System.out.println(".");
-        System.out.println("\\");
-        System.out.println("-");
-        System.out.println("+");
-        System.out.println("=");
-        System.out.println("Lido");
-        System.out.println(".");
-        System.out.println("\\");
-        System.out.println("-");
-        System.out.println("+");
-        System.out.println("=");
-        System.out.println(".");
+        int nMsgs = tempLines.size();
+        for (int counter = nMsgs; counter < 3; counter++){
+            tempLines.add(" ");
+        }
         predef_msgs = new String[tempLines.size()];
         predef_msgs = (String[]) tempLines.toArray(predef_msgs);
 
