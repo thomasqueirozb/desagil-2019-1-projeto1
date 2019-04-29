@@ -18,6 +18,7 @@
             android:text="@string/newmsg"
             android:textSize="32sp" />
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"

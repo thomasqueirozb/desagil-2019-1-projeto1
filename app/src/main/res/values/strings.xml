@@ -7,12 +7,8 @@
     <string name="msg4">Mensagem4</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="msgs">Mensagens pré-definidas</string>
-<<<<<<< Updated upstream
-=======
     <string name="title_activity_compor_nova_mensagem_pre_definida">ComporNovaMensagemPreDefinid</string>
     <string name="newmsg">Adicionar nova mensagem</string>
     <string name="typemsg">Digite sua mensagem aqui</string>
     <string name="writemsg">Compor um SMS</string>
-
->>>>>>> Stashed changes
 </resources>
