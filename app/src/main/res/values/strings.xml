@@ -11,4 +11,5 @@
     <string name="newmsg">Adicionar nova mensagem</string>
     <string name="typemsg">Digite sua mensagem aqui</string>
     <string name="writemsg">Compor um SMS</string>
+    <string name="adicionar_mensagem">adicionar mensagem</string>
 </resources>

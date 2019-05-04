@@ -11,13 +11,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/newmsg"
-            android:textSize="32sp" />
-
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -42,13 +35,13 @@
         app:srcCompat="@android:drawable/ic_menu_send" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton6"
+        android:id="@+id/floatingActionButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:layout_anchor="@+id/include2"
-        app:layout_anchorGravity="bottom|center"
-        app:srcCompat="@drawable/ic_morse_cod_white_com" />
+        app:layout_anchorGravity="start|bottom"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
 
 
 </android.support.design.widget.CoordinatorLayout>
