@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
-import android.view.View;
 
 public class MensagensPredefinidas extends AppCompatActivity {
     private String[] predef_msgs;
@@ -36,6 +35,15 @@ public class MensagensPredefinidas extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton addNewMessage = findViewById(R.id.addnewmessage);
+        addNewMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MensagensPredefinidas.this, ComporNovaMensagemPreDefinida.class);
+                startActivity(intent);
+            }
+        });
+
         FloatingActionButton fab_down = findViewById(R.id.floatingActionButton);
         fab_down.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +52,7 @@ public class MensagensPredefinidas extends AppCompatActivity {
                 setText();
             }
         });
+
 
         LinkedList<String> tempLines = new LinkedList<>();
 
@@ -81,14 +90,11 @@ public class MensagensPredefinidas extends AppCompatActivity {
 
         setText();
     }
-    public void adicionarmsg(View view) {
-        Intent intent = new Intent(MensagensPredefinidas.this, ComporNovaMensagemPreDefinida.class);
-        startActivity(intent);
-    }
+
     public void setText() {
-        if (this.msgsIdx < 0) {
+        if (this.msgsIdx < 0)
             this.msgsIdx += this.predef_msgs.length;
-        }
+
         this.msgsIdx = this.msgsIdx % this.predef_msgs.length;
 
         for (int i=0; i<3; i++) {
