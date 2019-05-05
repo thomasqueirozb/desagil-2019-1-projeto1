@@ -12,4 +12,6 @@
     <string name="typemsg">Digite sua mensagem aqui</string>
     <string name="writemsg">Compor um SMS</string>
     <string name="contact">Contato</string>
+    <string name="title_activity_send_sms">sendSMS</string>
+    <string name="title_activity_compose_sms">composeSMS</string>
 </resources>

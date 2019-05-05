@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".composeSMS"
+            android:label="@string/title_activity_compose_sms"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".NewPreDefMsg"
             android:label="@string/title_activity_compor_nova_mensagem_pre_definida"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -26,7 +30,7 @@
         <activity
             android:name=".PreDefMsgs"
             android:label="@string/title_activity_mensagens__predefinidas"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
