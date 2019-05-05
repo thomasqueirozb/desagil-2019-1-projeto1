@@ -29,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="108dp"
-        android:onClick="sendMessage"
+        android:onClick="preDefined"
         android:text="@string/msgs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button"
