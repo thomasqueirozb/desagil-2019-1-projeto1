@@ -13,7 +13,6 @@
         android:layout_width="120dp"
         android:layout_height="150dp"
         android:layout_marginBottom="4dp"
-        android:onClick="sendSMS"
         android:text="@string/writemsg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,7 +24,6 @@
         android:layout_marginStart="6dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="4dp"
-        android:onClick="contactList"
         android:text="@string/contact"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button5"
@@ -36,7 +34,6 @@
         android:layout_width="120dp"
         android:layout_height="150dp"
         android:layout_marginBottom="4dp"
-        android:onClick="sendPreDefMessage"
         android:text="@string/msgs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
