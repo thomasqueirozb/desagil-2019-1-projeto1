@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComporNovaMensagemPreDefinida">
+    tools:context=".NewPreDefMsg">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
 
     <include
         android:id="@+id/include2"
-        layout="@layout/content_compor_nova_mensagem_pre_definida" />
+        layout="@layout/content_new_pre_def_msg" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton3"

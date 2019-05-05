@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ComporNovaMensagemPreDefinida"
-    tools:showIn="@layout/activity_compor_nova_mensagem_pre_definida">
+    tools:context=".NewPreDefMsg"
+    tools:showIn="@layout/activity_new_pre_def_msg">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout"

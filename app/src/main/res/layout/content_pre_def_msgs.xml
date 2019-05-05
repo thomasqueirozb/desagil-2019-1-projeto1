@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MensagensPredefinidas"
-    tools:showIn="@layout/activity_mensagens__predefinidas">
+    tools:context=".PreDefMsgs"
+    tools:showIn="@layout/activity_pre_def_msgs">
 
     <TextView
         android:id="@+id/textView2"

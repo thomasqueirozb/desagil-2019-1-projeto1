@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 
-public class MensagensPredefinidas extends AppCompatActivity {
+public class PreDefMsgs extends AppCompatActivity {
     private String[] predef_msgs;
     private TextView[] textViews;
     private int msgsIdx;
@@ -21,7 +21,7 @@ public class MensagensPredefinidas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mensagens__predefinidas);
+        setContentView(R.layout.activity_pre_def_msgs);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

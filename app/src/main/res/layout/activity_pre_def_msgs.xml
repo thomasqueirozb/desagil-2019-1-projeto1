@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MensagensPredefinidas">
+    tools:context=".PreDefMsgs">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/content_mensagens__predefinidas" />
+        layout="@layout/content_pre_def_msgs" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
