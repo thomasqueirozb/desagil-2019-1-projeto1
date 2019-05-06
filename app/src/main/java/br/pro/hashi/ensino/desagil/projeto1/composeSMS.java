@@ -16,7 +16,7 @@ public class composeSMS extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton morse = findViewById(R.id.fabmorse);
+        FloatingActionButton morse = findViewById(R.id.fabmorse2);
         morse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

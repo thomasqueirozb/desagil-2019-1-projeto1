@@ -13,13 +13,4 @@
 
     <include layout="@layout/content_main" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="317dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:text="@string/appname"
-        android:textAlignment="center"
-        android:textSize="60sp" />
-
 </android.support.design.widget.CoordinatorLayout>

@@ -1,5 +1,6 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,15 @@ public class PreDefMsgs extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton addNewMessage = findViewById(R.id.addnewmessage);
+        addNewMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PreDefMsgs.this, NewPreDefMsg.class);
+                startActivity(intent);
+            }
+        });
+
         FloatingActionButton fab_down = findViewById(R.id.floatingActionButton);
         fab_down.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +64,11 @@ public class PreDefMsgs extends AppCompatActivity {
             try {
                 String line;
                 while ((line = br.readLine()) != null) {
-                   tempLines.add(line);
+                    tempLines.add(line);
                 }
                 is.close();
             } catch (IOException e) {
-              System.err.format("IOException: %s%n", e);
+                System.err.format("IOException: %s%n", e);
             }
         }
 
@@ -87,7 +97,7 @@ public class PreDefMsgs extends AppCompatActivity {
 
         this.msgsIdx = this.msgsIdx % this.predef_msgs.length;
 
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<this.textViews.length; i++) {
             this.textViews[i].setText(this.predef_msgs[(this.msgsIdx + i) % this.predef_msgs.length]);
         }
     }
