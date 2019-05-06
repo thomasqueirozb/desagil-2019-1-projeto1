@@ -12,4 +12,5 @@
     <string name="typemsg">Digite sua mensagem aqui</string>
     <string name="writemsg">Compor um SMS</string>
     <string name="adicionar_mensagem">adicionar mensagem</string>
+    <string name="mensagem_em_morse">Mensagem em Morse</string>
 </resources>
