@@ -71,9 +71,8 @@ public class ComporNovaMensagemPreDefinida extends AppCompatActivity {
                 }
                 else {
                     if (translator.getCodes().contains(morseMsgString)) {
-                        screen
-                        screenMsgString += morseMsgString;
-                        screenMsg.setText(String.valueOf(translator.morseToChar(screenMsgString)));
+                        screenMsgString += String.valueOf(translator.morseToChar(morseMsgString));
+                        screenMsg.setText(screenMsgString);
                         morseMsgString = "";
                         morseMsg.setText(morseMsgString);
                     }
