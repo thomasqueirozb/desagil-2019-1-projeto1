@@ -3,6 +3,7 @@
     package="br.pro.hashi.ensino.desagil.projeto1">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +14,7 @@
         <activity
             android:name=".composeSMS"
             android:label="@string/title_activity_compose_sms"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NewPreDefMsg"
             android:label="@string/title_activity_compor_nova_mensagem_pre_definida"
