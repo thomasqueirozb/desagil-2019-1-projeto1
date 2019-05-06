@@ -13,11 +13,14 @@ import android.support.v4.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_SEND_SMS = 0;
+    private String activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activity = "main";
 
         Button sendPreDef = findViewById(R.id.button5);
         sendPreDef.setOnClickListener(new View.OnClickListener() {
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 if (!hasPermission()){
                     askPermission();
+                    activity = "predef";
                 } else {
                     Intent pre = new Intent(MainActivity.this, PreDefMsgs.class);
                     startActivity(pre);
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 if (!hasPermission()){
                     askPermission();
+                    activity = "sendsms";
                 } else {
                     Intent pre = new Intent(MainActivity.this, composeSMS.class);
                     startActivity(pre);
@@ -50,19 +55,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        // Verifica se de fato é uma resposta ao pedido acima e se a
-        // resposta foi positiva. As respostas estão armazenadas no
-        // vetor grantResults, que pode estar vazio se o usuário
-        // escolheu simplesmente ignorar o pedido e não responder nada.
-        if (requestCode == 0 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-            // Se foi positiva, podemos iniciar a SMSActivity.
-        }
-    }
-
     public boolean hasPermission(){
         return (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED);
     }
@@ -72,6 +64,29 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.SEND_SMS,
         };
         ActivityCompat.requestPermissions(this, permissions, REQUEST_SEND_SMS);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        // Verifica se de fato é uma resposta ao pedido acima e se a
+        // resposta foi positiva. As respostas estão armazenadas no
+        // vetor grantResults, que pode estar vazio se o usuário
+        // escolheu simplesmente ignorar o pedido e não responder nada.
+        if (requestCode == REQUEST_SEND_SMS && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            switch (this.activity) {
+                case "sendsms":
+                    startActivity(new Intent(MainActivity.this, composeSMS.class));
+                    break;
+                case "predef":
+                    startActivity(new Intent(MainActivity.this, PreDefMsgs.class));
+                    break;
+                case "main":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 }
