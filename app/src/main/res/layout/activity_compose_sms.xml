@@ -22,20 +22,4 @@
 
     <include layout="@layout/content_compose_sms" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabmorse"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_morse_cod_white_com" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabsend"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center|center_horizontal|center_vertical|end"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_send_white_24dp" />
-
 </android.support.design.widget.CoordinatorLayout>

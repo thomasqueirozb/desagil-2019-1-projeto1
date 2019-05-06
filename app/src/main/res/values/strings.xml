@@ -14,4 +14,5 @@
     <string name="contact">Contato</string>
     <string name="title_activity_send_sms">sendSMS</string>
     <string name="title_activity_compose_sms">composeSMS</string>
+    <string name="appname">MorSMS</string>
 </resources>
