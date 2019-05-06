@@ -13,4 +13,5 @@
     <string name="writemsg">Compor um SMS</string>
     <string name="title_activity_dictionary">Dictionary</string>
     <string name="title_activity_contact">Contact</string>
+    <string name="title_activity_main3">Main3Activity</string>
 </resources>
