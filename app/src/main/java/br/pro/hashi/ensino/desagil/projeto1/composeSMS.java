@@ -23,7 +23,6 @@ public class composeSMS extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_new_pre_def_msg);
-            Toolbar toolbar = findViewById(R.id.toolbar);
 
             Translator translator = new Translator();
 
