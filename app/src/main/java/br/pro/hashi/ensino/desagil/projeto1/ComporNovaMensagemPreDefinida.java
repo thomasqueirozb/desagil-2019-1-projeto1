@@ -86,23 +86,15 @@ public class ComporNovaMensagemPreDefinida extends AppCompatActivity {
         sendButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-
-                System.out.println("-------------------");
-                System.out.println(morseMsgString);
-                System.out.println(morseMsg.getText().toString());
-                System.out.println(screenMsgString);
-                System.out.println(screenMsg.getText().toString());
-                System.out.println("-------------------");
-                return true;
-//                if (screenMsgString == "") {
-//                    showToast("Mensagem Vazia!");
-//                    return false;
-//                }
-//                else {
-//                    Intent intent = new Intent(ComporNovaMensagemPreDefinida.this, MensagensPredefinidas.class);
-//                    startActivity(intent);
-//                    return false;
-//                }
+                if (screenMsgString == "") {
+                    showToast("Mensagem Vazia!");
+                    return false;
+                }
+                else {
+                    Intent intent = new Intent(ComporNovaMensagemPreDefinida.this, MensagensPredefinidas.class);
+                    startActivity(intent);
+                    return false;
+                }
             }
         });
 
@@ -114,14 +106,27 @@ public class ComporNovaMensagemPreDefinida extends AppCompatActivity {
                         showToast("Mensagem vazia!");
                     }
                     else {
-                        screenMsgString = screenMsgString.substring(0, screenMsgString.length() - 1);
-                        screenMsg.setText(screenMsgString);
+                        int len = screenMsgString.length();
+                        if (len == 1) {
+                            screenMsgString = "";
+                            screenMsg.setText(screenMsgString);
+                        }
+                        else {
+                            screenMsgString = screenMsgString.substring(0, len - 1);
+                            screenMsg.setText(screenMsgString);
+                        }
                     }
                 }
                 else {
-                    morseMsgString = morseMsgString.substring(0, morseMsgString.length() - 1);
-                    morseMsg.setText(morseMsgString);
-
+                    int len = morseMsgString.length();
+                    if (len == 1) {
+                        morseMsgString = "";
+                        morseMsg.setText(morseMsgString);
+                    }
+                    else {
+                        morseMsgString = morseMsgString.substring(0, len - 1);
+                        morseMsg.setText(morseMsgString);
+                    }
                 }
             }
         });
