@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.support.v4.content.ContextCompat;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_SEND_SMS = 0;
@@ -36,6 +37,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button sendContact = findViewById(R.id.button5);
+        sendPreDef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                if (!hasPermission()){
+                    askPermission();
+                    activity = "contact";
+                } else {
+                    Intent pre = new Intent(MainActivity.this, Contact.class);
+                    startActivity(pre);
+                }
+            }
+        });
+
         Button sendSMS = findViewById(R.id.button3);
         sendSMS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Intent intent = getIntent();
+        String contact = (intent.getStringExtra("contact"));
+
+        if (contact != null){
+            String contactString = contact.toString();
+            TextView textView = findViewById(R.id.textView6);
+            textView.setText(contactString);
+        }
 
         if (!hasPermission()){
             askPermission();
@@ -87,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    public void setContact(View view){
+        Intent intent = new Intent(MainActivity.this, Contact.class);
+        startActivity(intent);
     }
 
 }

@@ -19,4 +19,5 @@
     <string name="title_activity_compose_sms">composeSMS</string>
     <string name="appname">MorSMS</string>
     <string name="title_activity_write_sms">writeSMS</string>
+    <string name="title_activity_contact">Contact</string>
 </resources>
