@@ -130,4 +130,9 @@ public class composeSMS extends AppCompatActivity {
                 }
             });
         }
+
+    public void checkDictionary(View view){
+        Intent intent = new Intent(composeSMS.this, Dictionary.class);
+        startActivity(intent);
+    }
 }

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     askPermission();
                     activity = "contact";
                 } else {
-                    Intent pre = new Intent(MainActivity.this, Contact.class);
+                    Intent pre = new Intent(MainActivity.this, PreDefMsgs.class);
                     startActivity(pre);
                 }
             }
