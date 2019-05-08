@@ -10,8 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.PhoneNumberUtils;
@@ -23,7 +21,6 @@ public class composeSMS extends AppCompatActivity {
 
         private String morseMsgString = "";
         private String screenMsgString = "";
-        private boolean hasFocus;
 
         private void showToast(String text){
             Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
@@ -34,10 +31,9 @@ public class composeSMS extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
             setContentView(R.layout.activity_compose_sms);
+
+            hideNavigationBar();
 
             Translator translator = new Translator();
 
@@ -228,6 +224,23 @@ public class composeSMS extends AppCompatActivity {
                 }
             });
         }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        hideNavigationBar();
+    }
+
+    private void hideNavigationBar(){
+        this.getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        );
+    }
 
     public void checkDictionary(View view){
         Intent intent = new Intent(composeSMS.this, Dictionary.class);
