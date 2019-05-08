@@ -1,15 +1,23 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
+import android.app.PendingIntent;
+import java.util.regex.Pattern;
 
 public class composeSMS extends AppCompatActivity {
 
@@ -19,6 +27,7 @@ public class composeSMS extends AppCompatActivity {
 
         private void showToast(String text){
             Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP, 0, 130);
             toast.show();
         }
 
@@ -32,20 +41,66 @@ public class composeSMS extends AppCompatActivity {
 
             Translator translator = new Translator();
 
-            hasFocus = true;
-
-            super.onWindowFocusChanged(hasFocus);
-            if (hasFocus) {
-                getWindow().getDecorView().setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-            }
 
 //      Botoes
+
+            // SMS
+            String SENT = "SMS_SENT";
+            String DELIVERED = "SMS_DELIVERED";
+            PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
+            PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,new Intent(DELIVERED), 0);
+
+
+            // ---when the SMS has been sent---
+            this.registerReceiver(new BroadcastReceiver() {
+                        @Override
+                        public void onReceive(Context arg0, Intent arg1) {
+//                            System.out.println("SENT");
+
+                            switch(getResultCode()) {
+                                case Activity.RESULT_OK:
+                                    showToast("Mensagem enviada");
+                                    break;
+                                case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                                    showToast("Erro ao enviar a mensagem");
+                                    break;
+                                case SmsManager.RESULT_ERROR_NO_SERVICE:
+                                    showToast("Sem serviço");
+                                    break;
+                                case SmsManager.RESULT_ERROR_NULL_PDU:
+                                    showToast("Erro com PDU");
+                                    break;
+                                case SmsManager.RESULT_ERROR_RADIO_OFF:
+                                    showToast("Serviço celular desligado");
+                                    break;
+                            }
+                        }
+                    }, new IntentFilter(SENT));
+
+            // ---when the SMS has been delivered---
+            this.registerReceiver(new BroadcastReceiver() {
+                        @Override
+                        public void onReceive(Context arg0,Intent arg1) {
+//                            System.out.println("DELIVERED");
+                            switch(getResultCode()) {
+                                case Activity.RESULT_OK:
+//                                    showToast("Mensagem recebida");
+                                    break;
+//                                case Activity.RESULT_CANCELED:
+//                                    break;
+                                default:
+//                                    showToast("Mensagem não recebida");
+                                    break;
+                            }
+                        }
+                    }, new IntentFilter(DELIVERED));
+
+
+            // SmsManager sms = SmsManager.getDefault();
+            // sms.sendTextMessage(phoneNumber, null,message,sentPI, deliveredPI);
+
+            // Botoes
+
             FloatingActionButton backButton = findViewById(R.id.backButton);
             FloatingActionButton morseButton = findViewById(R.id.morseButton);
             FloatingActionButton backspaceButton = findViewById(R.id.backspaceButton);
@@ -113,18 +168,30 @@ public class composeSMS extends AppCompatActivity {
                 }
             });
 
+            Pattern pattern = Pattern.compile("^\\s*$");
+
             sendButton.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    if (screenMsgString == "") {
-                        showToast("Mensagem Vazia!");
+                    if (pattern.matcher(screenMsgString).matches()) {
+                        showToast("Mensagem vazia!");
                         return false;
                     }
-                    else {
-                        Intent intent = new Intent(composeSMS.this, MainActivity.class);
-                        startActivity(intent);
+
+                    String phoneNumber = "+5511994500370";
+                    String contactName = "Bruno";
+
+                    if (!PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)) {
+                        showToast("Número inválido!");
                         return false;
                     }
+
+                    SmsManager manager = SmsManager.getDefault();
+                    manager.sendTextMessage(phoneNumber, null, screenMsgString, sentPI, deliveredPI);
+
+                    screenMsgString = "";
+                    screenMsg.setText("");
+                    return true;
                 }
             });
 
