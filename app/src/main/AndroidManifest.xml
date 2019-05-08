@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Dictionary"
+            android:label="@string/title_activity_dictionary"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Contact"
+            android:label="@string/title_activity_contact"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".composeSMS"
             android:label="@string/title_activity_compose_sms"
             android:theme="@style/AppTheme.NoActionBar" />

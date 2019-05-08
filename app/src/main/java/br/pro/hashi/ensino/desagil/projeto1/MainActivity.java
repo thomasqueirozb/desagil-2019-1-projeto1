@@ -8,8 +8,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.support.v4.content.ContextCompat;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_SEND_SMS = 0;
@@ -18,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_main);
 
         activity = "main";
@@ -29,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
                 if (!hasPermission()){
                     askPermission();
                     activity = "predef";
+                } else {
+                    Intent pre = new Intent(MainActivity.this, PreDefMsgs.class);
+                    startActivity(pre);
+                }
+            }
+        });
+
+
+        Button sendContact = findViewById(R.id.button5);
+        sendPreDef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                if (!hasPermission()){
+                    askPermission();
+                    activity = "contact";
                 } else {
                     Intent pre = new Intent(MainActivity.this, PreDefMsgs.class);
                     startActivity(pre);
@@ -49,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Intent intent = getIntent();
+        String contact = (intent.getStringExtra("contact"));
+
+        if (contact != null){
+            String contactString = contact.toString();
+            TextView textView = findViewById(R.id.textView6);
+            textView.setText(contactString);
+        }
 
         if (!hasPermission()){
             askPermission();
@@ -87,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    public void setContact(View view){
+        Intent intent = new Intent(MainActivity.this, Contact.class);
+        startActivity(intent);
     }
 
 }

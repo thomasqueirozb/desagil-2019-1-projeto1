@@ -9,16 +9,18 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 
-public class PreDefMsgs extends AppCompatActivity {
+public class Contact extends AppCompatActivity {
     private String[] predef_msgs;
     private TextView[] textViews;
     private int msgsIdx;
+    private CharSequence contact;
 
 
     @Override
@@ -27,7 +29,7 @@ public class PreDefMsgs extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        setContentView(R.layout.activity_pre_def_msgs);
+        setContentView(R.layout.activity_contact);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,15 +39,6 @@ public class PreDefMsgs extends AppCompatActivity {
             public void onClick(View view) {
                 msgsIdx -= 1;
                 setText();
-            }
-        });
-
-        FloatingActionButton addNewMessage = findViewById(R.id.addnewmessage);
-        addNewMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PreDefMsgs.this, NewPreDefMsg.class);
-                startActivity(intent);
             }
         });
 
@@ -62,7 +55,7 @@ public class PreDefMsgs extends AppCompatActivity {
         LinkedList<String> tempLines = new LinkedList<>();
 
         // Falta criar o arquivo se não existir
-        InputStream is = this.getResources().openRawResource(R.raw.mensagenspredefinidas);
+        InputStream is = this.getResources().openRawResource(R.raw.contatos);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
         if (is != null) {
@@ -102,8 +95,17 @@ public class PreDefMsgs extends AppCompatActivity {
 
         this.msgsIdx = this.msgsIdx % this.predef_msgs.length;
 
-        for (int i=0; i<this.textViews.length; i++) {
+        for (int i=0; i<3; i++) {
             this.textViews[i].setText(this.predef_msgs[(this.msgsIdx + i) % this.predef_msgs.length]);
         }
+        TextView myTextView = findViewById(R.id.textView2);
+
+        this.contact = myTextView.getText();
+    }
+
+    public void setContact(View view){
+        Intent intent = new Intent(Contact.this, MainActivity.class);
+        intent.putExtra("contact",this.contact);
+        startActivity(intent);
     }
 }
