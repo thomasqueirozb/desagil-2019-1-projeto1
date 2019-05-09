@@ -11,10 +11,18 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.LinkedList;
 
 public class Contact extends AppCompatActivity {
@@ -67,15 +75,42 @@ public class Contact extends AppCompatActivity {
         InputStream is = this.getResources().openRawResource(R.raw.contatos);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-        if (is != null) {
+
+        InputStream us = getResources().openRawResource(R.raw.contact);
+        Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = new BufferedReader(new InputStreamReader(us, "UTF-8"));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             try {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    tempLines.add(line);
-                }
-                is.close();
+                us.close();
             } catch (IOException e) {
-                System.err.format("IOException: %s%n", e);
+                e.printStackTrace();
+            }
+        }
+
+        String jsonString = writer.toString();
+
+        JSONObject object = null;
+        try {
+            object = new JSONObject(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JSONArray keys = object.names ();
+        for (int i = 0; i <keys.length(); i++){
+            try {
+                tempLines.add(keys.getString(i));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
 
