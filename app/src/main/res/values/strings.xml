@@ -1,24 +1,112 @@
 <resources>
-    <string name="app_name">Projeto1</string>
+    <string name="app_name">MorSMS</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="writemsg">Compor um SMS</string>
+    <string name="changecontact">Mudar contato</string>
+    <string name="contactname">Nome do contato</string>
+    <string name="msgs">Mensagens frequentes</string>
+
     <string name="title_activity_mensagens__predefinidas">Mensagens frequentes</string>
+
     <string name="msg1">Mensagem1</string>
     <string name="msg2">Mensagem2</string>
     <string name="msg3">Mensagem3</string>
     <string name="msg4">Mensagem4</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="msgs">Mensagens pré-definidas</string>
+
+
     <string name="title_activity_compor_nova_mensagem_pre_definida">ComporNovaMensagemPreDefinid</string>
     <string name="newmsg">Adicionar nova mensagem</string>
     <string name="typemsg">Digite sua mensagem aqui</string>
-    <string name="writemsg">Compor um SMS</string>
-    <string name="changecontact">Mudar contato</string>
-    <string name="contactname">Nome do contato</string>
-    <string name="adicionar_mensagem">adicionar mensagem</string>
+
     <string name="mensagem_em_morse">Mensagem em Morse</string>
     <string name="title_activity_send_sms">sendSMS</string>
     <string name="title_activity_compose_sms">composeSMS</string>
-    <string name="appname">MorSMS</string>
+
     <string name="title_activity_write_sms">writeSMS</string>
     <string name="title_activity_contact">Contact</string>
     <string name="title_activity_dictionary">Dictionary</string>
+
+    <string name="A">A</string>
+    <string name="MA">.-</string>
+    <string name="B">B</string>
+    <string name="MB">-...</string>
+    <string name="C">C</string>
+    <string name="MC">-.-.</string>
+    <string name="D">D</string>
+    <string name="MD">-..</string>
+    <string name="E">E</string>
+    <string name="ME">.</string>
+    <string name="F">F</string>
+    <string name="MF">..-.</string>
+    <string name="G">G</string>
+    <string name="MG">--.</string>
+    <string name="H">H</string>
+    <string name="MH">....</string>
+    <string name="I">I</string>
+    <string name="MI">..</string>
+    <string name="J">J</string>
+    <string name="MJ">.---</string>
+    <string name="K">K</string>
+    <string name="MK">-.-</string>
+    <string name="L">L</string>
+    <string name="ML">.-..</string>
+    <string name="M">M</string>
+    <string name="MM">--</string>
+    <string name="N">N</string>
+    <string name="MN">-.</string>
+    <string name="O">O</string>
+    <string name="MO">---</string>
+    <string name="P">P</string>
+    <string name="MP">.--.</string>
+    <string name="Q">Q</string>
+    <string name="MQ">--.-</string>
+    <string name="R">R</string>
+    <string name="MR">.-.</string>
+    <string name="S">S</string>
+    <string name="MS">...</string>
+    <string name="T">T</string>
+    <string name="MT">-</string>
+    <string name="U">U</string>
+    <string name="MU">..-</string>
+    <string name="V">V</string>
+    <string name="MV">...-</string>
+    <string name="W">W</string>
+    <string name="MW">.--</string>
+    <string name="X">X</string>
+    <string name="MX">-..-</string>
+    <string name="Y">Y</string>
+    <string name="MY">-.--</string>
+    <string name="Z">Z</string>
+    <string name="MZ">--..</string>
+
+    <string name="N0">0</string>
+    <string name="M0">-----</string>
+    <string name="N1">1</string>
+    <string name="M1">.----</string>
+    <string name="N2">2</string>
+    <string name="M2">..---</string>
+    <string name="N3">3</string>
+    <string name="M3">...--</string>
+    <string name="N4">4</string>
+    <string name="M4">....-</string>
+    <string name="N5">5</string>
+    <string name="M5">.....</string>
+    <string name="N6">6</string>
+    <string name="M6">-....</string>
+    <string name="N7">7</string>
+    <string name="M7">--...</string>
+    <string name="N8">8</string>
+    <string name="M8">---..</string>
+    <string name="N9">9</string>
+    <string name="M9">----.</string>
+
+    <string name="dot">.</string>
+    <string name="mdot">.-.-.-</string>
+    <string name="question">\?</string>
+    <string name="mquestion">..--..</string>
+    <string name="slash">/</string>
+    <string name="mslash">-..-.</string>
+
+    <string name="backdic">Go Back</string>
 </resources>

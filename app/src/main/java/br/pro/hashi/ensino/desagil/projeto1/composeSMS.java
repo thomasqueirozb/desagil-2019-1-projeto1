@@ -107,8 +107,6 @@ public class composeSMS extends AppCompatActivity {
             screenMsg.setText("");
             morseMsg.setText("");
 
-
-
             backButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
