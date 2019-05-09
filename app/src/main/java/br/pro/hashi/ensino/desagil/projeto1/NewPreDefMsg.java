@@ -2,6 +2,7 @@ package br.pro.hashi.ensino.desagil.projeto1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -111,10 +114,21 @@ public class NewPreDefMsg extends AppCompatActivity {
                     return false;
                 }
                 else {
-                    myRef.child("msgPre").push().setValue(screenMsgString);
-                    showToast("Mensagem adicionada");
-                    Intent intent = new Intent(NewPreDefMsg.this, PreDefMsgs.class);
-                    startActivity(intent);
+                    myRef.child("msgPre").push().setValue(screenMsgString).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            showToast("Mensagem adicionada");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    showToast("Falha ao adicionar a mensagem");
+                                    // Write failed
+                                    // ...
+                                }
+                            });;
+                    screenMsgString = "";
+                    screenMsg.setText(screenMsgString);
                     return false;
                 }
             }
