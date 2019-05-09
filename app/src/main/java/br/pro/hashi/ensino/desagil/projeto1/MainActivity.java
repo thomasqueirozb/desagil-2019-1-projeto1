@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         activity = "main";
 
         String contact = getIntent().getStringExtra("contact");
+        String number = getIntent().getStringExtra("number");
+
 
 
         Button sendPreDef = findViewById(R.id.button5);
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(MainActivity.this, PreDefMsgs.class);
                     intent.putExtra("contact", contact);
+                    intent.putExtra("number", number);
                     startActivity(intent);
                 }
             }
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(MainActivity.this, composeSMS.class);
                     intent.putExtra("contact", contact);
+                    intent.putExtra("number", number);
                     startActivity(intent);
                 }
             }

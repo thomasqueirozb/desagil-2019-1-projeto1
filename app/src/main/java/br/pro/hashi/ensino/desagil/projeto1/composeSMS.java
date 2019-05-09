@@ -39,9 +39,12 @@ public class composeSMS extends AppCompatActivity {
 
             Intent intent = getIntent();
             String contact = (intent.getStringExtra("contact"));
+            String number = (intent.getStringExtra("number"));
+
 
             System.out.println("AQUI COMPOSE CONTATO");
             System.out.println(contact);
+            System.out.println(number);
 
 //      Botoes
 
