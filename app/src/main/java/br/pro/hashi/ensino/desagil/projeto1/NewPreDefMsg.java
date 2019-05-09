@@ -121,19 +121,20 @@ public class NewPreDefMsg extends AppCompatActivity {
                             showToast("Mensagem adicionada");
                         }
                     }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    showToast("Falha ao adicionar a mensagem");
-                                    // Write failed
-                                    // ...
-                                }
-                            });;
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            showToast("Falha ao adicionar a mensagem");
+                            // Write failed
+                            // ...
+                        }
+                    });;
                     screenMsgString = "";
                     screenMsg.setText(screenMsgString);
                     return false;
                 }
             }
         });
+
 
         backspaceButton.setOnClickListener(new View.OnClickListener() {
             @Override

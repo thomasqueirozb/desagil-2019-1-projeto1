@@ -30,6 +30,7 @@ public class Contact extends AppCompatActivity {
     private TextView[] textViews;
     private int msgsIdx;
     private CharSequence contact;
+    private String number;
 
 
     @Override
@@ -162,11 +163,51 @@ public class Contact extends AppCompatActivity {
         TextView myTextView = findViewById(R.id.textView2);
 
         this.contact = myTextView.getText();
+
+        InputStream us = getResources().openRawResource(R.raw.contact);
+        Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = new BufferedReader(new InputStreamReader(us, "UTF-8"));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                us.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        String jsonString = writer.toString();
+
+        JSONObject object = null;
+
+        try {
+            object = new JSONObject(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            this.number = object.getString(this.contact.toString());
+            System.out.println(this.number);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void setContact(View view){
         Intent intent = new Intent(Contact.this, MainActivity.class);
         intent.putExtra("contact",this.contact);
+        intent.putExtra("number", this.number);
         startActivity(intent);
     }
 }

@@ -27,12 +27,12 @@
         android:id="@+id/textView2"
         android:layout_width="350dp"
         android:layout_height="54dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="60dp"
         android:background="#FFCDD2"
         android:gravity="center"
         android:text="@string/msg2"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -40,12 +40,12 @@
         android:id="@+id/textView3"
         android:layout_width="350dp"
         android:layout_height="54dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="176dp"
         android:background="#00B7FF"
         android:gravity="center"
         android:text="@string/msg2"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

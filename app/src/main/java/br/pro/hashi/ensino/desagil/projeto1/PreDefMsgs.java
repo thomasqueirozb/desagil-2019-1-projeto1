@@ -45,9 +45,14 @@ public class PreDefMsgs extends AppCompatActivity implements ValueEventListener 
 
         Intent intent = getIntent();
         String contact = (intent.getStringExtra("contact"));
+        String number = (intent.getStringExtra("number"));
+
 
         System.out.println("AQUI PREDEF CONTATO");
         System.out.println(contact);
+        System.out.println(number);
+
+
 
         FloatingActionButton fab_up = findViewById(R.id.floatingActionButton2);
         fab_up.setOnClickListener(new View.OnClickListener() {
