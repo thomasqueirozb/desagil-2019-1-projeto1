@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1064303877411",
+    "firebase_url": "https://desagil-2019-morsms.firebaseio.com",
+    "project_id": "desagil-2019-morsms",
+    "storage_bucket": "desagil-2019-morsms.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064303877411:android:9d55fd8b543206e9",
+        "android_client_info": {
+          "package_name": "br.pro.hashi.ensino.desagil.projeto1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064303877411-rh7d8617nkb88ge051ic4oo27vl0uuti.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV8hV-OeNs_MHQRiVGxu162B3wh0PI_7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064303877411-rh7d8617nkb88ge051ic4oo27vl0uuti.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
