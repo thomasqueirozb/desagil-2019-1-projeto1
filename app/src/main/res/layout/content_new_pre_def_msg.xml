@@ -24,8 +24,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/morseButton"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -41,8 +41,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/sendButton"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -51,7 +51,7 @@
         app:layout_anchorGravity="end|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.844"
@@ -75,52 +75,50 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backButton"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
-        app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="start|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.844"
-        app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
+        app:srcCompat="@drawable/ic_subdirectory_arrow_left_white_65dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/backspaceButton"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
-        app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="end|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.844"
-        app:srcCompat="@drawable/ic_backspace_white_24dp" />
+        app:srcCompat="@drawable/ic_backspace_white_65dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="296dp"
-        android:layout_marginBottom="520dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginBottom="508dp"
         android:clickable="true"
         android:onClick="checkDictionary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_morse_cod_white_com" />
+        app:srcCompat="@drawable/ic_book_white_65dp" />
 
 </android.support.constraint.ConstraintLayout>
