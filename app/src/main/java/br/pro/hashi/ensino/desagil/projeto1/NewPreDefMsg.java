@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class NewPreDefMsg extends AppCompatActivity {
     //  Morse and Screen MSGS
     private String morseMsgString = "";
@@ -39,6 +42,12 @@ public class NewPreDefMsg extends AppCompatActivity {
         TextView morseMsg = findViewById(R.id.morseMsg);
         screenMsg.setText("");
         morseMsg.setText("");
+
+// Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +111,8 @@ public class NewPreDefMsg extends AppCompatActivity {
                     return false;
                 }
                 else {
+                    myRef.child("msgPre").push().setValue(screenMsgString);
+                    showToast("Mensagem adicionada");
                     Intent intent = new Intent(NewPreDefMsg.this, PreDefMsgs.class);
                     startActivity(intent);
                     return false;
