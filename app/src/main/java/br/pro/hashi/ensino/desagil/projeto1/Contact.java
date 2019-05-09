@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -47,6 +48,15 @@ public class Contact extends AppCompatActivity {
             public void onClick(View view) {
                 msgsIdx += 1;
                 setText();
+            }
+        });
+
+        FloatingActionButton sendSMS = findViewById(R.id.backButton);
+        sendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                    Intent pre = new Intent(Contact.this, MainActivity.class);
+                    startActivity(pre);
             }
         });
 
