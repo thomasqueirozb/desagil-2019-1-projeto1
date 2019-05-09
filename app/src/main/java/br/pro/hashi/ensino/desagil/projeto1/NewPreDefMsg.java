@@ -26,6 +26,7 @@ public class NewPreDefMsg extends AppCompatActivity {
         toast.show();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
