@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         activity = "main";
 
+        String contact = getIntent().getStringExtra("contact");
+
+
         Button sendPreDef = findViewById(R.id.button5);
         sendPreDef.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,26 +38,13 @@ public class MainActivity extends AppCompatActivity {
                     askPermission();
                     activity = "predef";
                 } else {
-                    Intent pre = new Intent(MainActivity.this, PreDefMsgs.class);
-                    startActivity(pre);
+                    Intent intent = new Intent(MainActivity.this, PreDefMsgs.class);
+                    intent.putExtra("contact", contact);
+                    startActivity(intent);
                 }
             }
         });
 
-
-        Button sendContact = findViewById(R.id.button5);
-        sendPreDef.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                if (!hasPermission()){
-                    askPermission();
-                    activity = "contact";
-                } else {
-                    Intent pre = new Intent(MainActivity.this, PreDefMsgs.class);
-                    startActivity(pre);
-                }
-            }
-        });
 
         Button sendSMS = findViewById(R.id.button3);
         sendSMS.setOnClickListener(new View.OnClickListener() {
@@ -64,14 +54,13 @@ public class MainActivity extends AppCompatActivity {
                     askPermission();
                     activity = "sendsms";
                 } else {
-                    Intent pre = new Intent(MainActivity.this, composeSMS.class);
-                    startActivity(pre);
+                    Intent intent = new Intent(MainActivity.this, composeSMS.class);
+                    intent.putExtra("contact", contact);
+                    startActivity(intent);
                 }
             }
         });
 
-        Intent intent = getIntent();
-        String contact = (intent.getStringExtra("contact"));
 
         if (contact != null){
             String contactString = contact.toString();
