@@ -21,6 +21,8 @@ public class composeSMS extends AppCompatActivity {
 
         private String morseMsgString = "";
         private String screenMsgString = "";
+        private String contactName;
+        private String phoneNumber;
 
         private void showToast(String text){
             Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
@@ -38,13 +40,9 @@ public class composeSMS extends AppCompatActivity {
             Translator translator = new Translator();
 
             Intent intent = getIntent();
-            String contact = (intent.getStringExtra("contact"));
-            String number = (intent.getStringExtra("number"));
+            contactName = (intent.getStringExtra("contact"));
+            phoneNumber = (intent.getStringExtra("number"));
 
-
-            System.out.println("AQUI COMPOSE CONTATO");
-            System.out.println(contact);
-            System.out.println(number);
 
 //      Botoes
 
@@ -63,7 +61,7 @@ public class composeSMS extends AppCompatActivity {
 
                             switch(getResultCode()) {
                                 case Activity.RESULT_OK:
-                                    showToast("Mensagem enviada");
+                                    showToast("Mensagem enviada para " + contactName);
                                     break;
                                 case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
                                     showToast("Erro ao enviar a mensagem");
@@ -180,8 +178,6 @@ public class composeSMS extends AppCompatActivity {
                         return false;
                     }
 
-                    String phoneNumber = "+5511994500370";
-                    String contactName = "Bruno";
 
                     if (!PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)) {
                         showToast("Número inválido!");

@@ -1,15 +1,24 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +32,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 public class PreDefMsgs extends AppCompatActivity implements ValueEventListener {
     private String[] predef_msgs = new String[]{
@@ -32,7 +42,14 @@ public class PreDefMsgs extends AppCompatActivity implements ValueEventListener 
     };
     private TextView[] textViews;
     private int msgsIdx;
+    private String contactName;
+    private String phoneNumber;
 
+    private void showToast(String text){
+        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 0, 130);
+        toast.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +61,60 @@ public class PreDefMsgs extends AppCompatActivity implements ValueEventListener 
         hideNavigationBar();
 
         Intent intent = getIntent();
-        String contact = (intent.getStringExtra("contact"));
-        String number = (intent.getStringExtra("number"));
+        contactName = (intent.getStringExtra("contact"));
+        phoneNumber = (intent.getStringExtra("number"));
 
 
-        System.out.println("AQUI PREDEF CONTATO");
-        System.out.println(contact);
-        System.out.println(number);
+        // SMS
+        String SENT = "SMS_SENT";
+        String DELIVERED = "SMS_DELIVERED";
+        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
+        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,new Intent(DELIVERED), 0);
 
+
+        // ---when the SMS has been sent---
+        this.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context arg0, Intent arg1) {
+//                            System.out.println("SENT");
+
+                switch(getResultCode()) {
+                    case Activity.RESULT_OK:
+                        showToast("Mensagem enviada para " + contactName);
+                        break;
+                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                        showToast("Erro ao enviar a mensagem");
+                        break;
+                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+                        showToast("Sem serviço");
+                        break;
+                    case SmsManager.RESULT_ERROR_NULL_PDU:
+                        showToast("Erro com PDU");
+                        break;
+                    case SmsManager.RESULT_ERROR_RADIO_OFF:
+                        showToast("Serviço celular desligado");
+                        break;
+                }
+            }
+        }, new IntentFilter(SENT));
+
+        // ---when the SMS has been delivered---
+        this.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context arg0,Intent arg1) {
+//                            System.out.println("DELIVERED");
+                switch(getResultCode()) {
+                    case Activity.RESULT_OK:
+//                                    showToast("Mensagem recebida");
+                        break;
+//                                case Activity.RESULT_CANCELED:
+//                                    break;
+                    default:
+//                                    showToast("Mensagem não recebida");
+                        break;
+                }
+            }
+        }, new IntentFilter(DELIVERED));
 
 
         FloatingActionButton fab_up = findViewById(R.id.floatingActionButton2);
@@ -95,24 +158,6 @@ public class PreDefMsgs extends AppCompatActivity implements ValueEventListener 
         DatabaseReference myRef = database.getReference("msgPre");
         myRef.addValueEventListener(this);
 
-        // LinkedList<String> tempLines = new LinkedList<>();
-
-        // // Falta criar o arquivo se não existir
-        // InputStream is = this.getResources().openRawResource(R.raw.mensagenspredefinidas);
-        // BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-        // if (is != null) {
-        //     try {
-        //         String line;
-        //         while ((line = br.readLine()) != null) {
-        //             tempLines.add(line);
-        //         }
-        //         is.close();
-        //     } catch (IOException e) {
-        //         System.err.format("IOException: %s%n", e);
-        //     }
-        // }
-
 
         this.textViews = new TextView[3];
 
@@ -124,6 +169,31 @@ public class PreDefMsgs extends AppCompatActivity implements ValueEventListener 
         this.msgsIdx = 0;
 
         setText();
+
+        Pattern pattern = Pattern.compile("^\\s*$");
+
+        FloatingActionButton sendButton = findViewById(R.id.fab);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String screenMsgString = predef_msgs[(msgsIdx + 1) % predef_msgs.length];
+                if (pattern.matcher(screenMsgString).matches()) {
+                    showToast("Mensagem vazia!");
+                    return;
+                }
+
+
+                if (!PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)) {
+                    showToast("Número inválido!");
+                    return;
+                }
+
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(phoneNumber, null, screenMsgString, sentPI, deliveredPI);
+
+                return;
+            }
+        });
     }
 
     @Override
