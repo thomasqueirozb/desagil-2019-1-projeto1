@@ -21,7 +21,9 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/content_pre_def_msgs" />
+        layout="@layout/content_pre_def_msgs"
+        app:layout_anchor="@+id/addnewmessage"
+        app:layout_anchorGravity="top|center" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"

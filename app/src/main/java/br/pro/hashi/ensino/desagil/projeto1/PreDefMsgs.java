@@ -48,6 +48,15 @@ public class PreDefMsgs extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton sendSMS = findViewById(R.id.backButton);
+        sendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent pre = new Intent(PreDefMsgs.this, MainActivity.class);
+                startActivity(pre);
+            }
+        });
+
         FloatingActionButton fab_down = findViewById(R.id.floatingActionButton);
         fab_down.setOnClickListener(new View.OnClickListener() {
             @Override
