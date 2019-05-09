@@ -30,6 +30,12 @@ public class PreDefMsgs extends AppCompatActivity {
 
         hideNavigationBar();
 
+        Intent intent = getIntent();
+        String contact = (intent.getStringExtra("contact"));
+
+        System.out.println("AQUI PREDEF CONTATO");
+        System.out.println(contact);
+
         FloatingActionButton fab_up = findViewById(R.id.floatingActionButton2);
         fab_up.setOnClickListener(new View.OnClickListener() {
             @Override
