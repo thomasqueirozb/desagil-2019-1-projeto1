@@ -9,9 +9,9 @@
 
         <TextView
             android:id="@+id/TRAIN_CELL"
-            android:layout_width="214dp"
-            android:textSize="32dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:textSize="32dp" />
 
         <TextView
             android:id="@+id/FROM_CELL"

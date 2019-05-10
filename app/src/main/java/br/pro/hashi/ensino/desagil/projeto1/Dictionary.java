@@ -10,6 +10,13 @@ import android.widget.Button;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Dictionary extends AppCompatActivity {
 
@@ -29,6 +36,29 @@ public class Dictionary extends AppCompatActivity {
                 finish();
             }
         });
+
+        Translator translator = new Translator();
+
+        List<String> messages = Arrays.asList("a", "b", "c", "d", "e", "f",
+                "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+                "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5",
+                "6", "7", "8", "9");
+
+
+        ListView list = (ListView) findViewById(R.id.SCHEDULE);
+
+        ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+
+        for(String element: messages) {
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("train", element);
+            map.put("from", translator.charToMorse(element.toCharArray()[0]));
+            mylist.add(map);
+        }
+
+        SimpleAdapter mSchedule = new SimpleAdapter(this, mylist, R.layout.row,
+                new String[] {"train", "from"}, new int[] {R.id.TRAIN_CELL, R.id.FROM_CELL});
+        list.setAdapter(mSchedule);
 
     }
 
