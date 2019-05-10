@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     askPermission();
                     activity = "predef";
                 } else {
-                    Intent intent = new Intent(MainActivity.this, PreDefMsgs.class);
+                    Intent intent = new Intent(MainActivity.this, DictionaryMorse.class);
                     intent.putExtra("contact", contact);
                     intent.putExtra("number", number);
                     startActivity(intent);
