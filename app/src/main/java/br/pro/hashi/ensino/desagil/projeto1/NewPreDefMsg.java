@@ -41,8 +41,7 @@ public class NewPreDefMsg extends AppCompatActivity {
         FloatingActionButton morseButton = findViewById(R.id.morseButton);
         FloatingActionButton backspaceButton = findViewById(R.id.backspaceButton);
         FloatingActionButton sendButton = findViewById(R.id.sendButton);
-        FloatingActionButton dictionaryButton = findViewById(R.id.floatingActionButton3);
-        FloatingActionButton dictionaryMorse = findViewById(R.id.buttonMorse);
+        FloatingActionButton dictionaryButton = findViewById(R.id.dictionaryButton1);
 
         TextView screenMsg = findViewById(R.id.mensagemTela);
         TextView morseMsg = findViewById(R.id.morseMsg);
@@ -63,19 +62,20 @@ public class NewPreDefMsg extends AppCompatActivity {
             }
         });
 
-        dictionaryMorse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(NewPreDefMsg.this, DictionaryMorse.class);
-                startActivity(intent);
-            }
-        });
-
         dictionaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NewPreDefMsg.this, Dictionary.class);
                 startActivity(intent);
+            }
+        });
+
+        dictionaryButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent(NewPreDefMsg.this, DictionaryMorse.class);
+                startActivity(intent);
+                return true;
             }
         });
 

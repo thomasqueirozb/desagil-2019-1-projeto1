@@ -121,15 +121,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_book_white_65dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="132dp"
-        android:clickable="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_manage" />
-
 </android.support.constraint.ConstraintLayout>
