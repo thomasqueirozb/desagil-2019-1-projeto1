@@ -8,6 +8,23 @@
     tools:context=".composeSMS"
     tools:showIn="@layout/activity_compose_sms">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/morseButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842"
+        app:srcCompat="@drawable/ic_morse_cod_white_com" />
+
     <TextView
         android:id="@+id/mensagemTela"
         android:layout_width="352dp"
@@ -24,23 +41,6 @@
         app:layout_constraintVertical_bias="0.348" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/morseButton"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843"
-        app:srcCompat="@drawable/ic_morse_cod_white_com" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/sendButton"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -52,7 +52,7 @@
         app:layout_anchorGravity="end|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.842"
@@ -89,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845"
+        app:layout_constraintVertical_bias="0.842"
         app:srcCompat="@drawable/ic_subdirectory_arrow_left_white_65dp" />
 
     <android.support.design.widget.FloatingActionButton
@@ -104,10 +104,10 @@
         app:layout_anchorGravity="end|bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843"
+        app:layout_constraintVertical_bias="0.842"
         app:srcCompat="@drawable/ic_backspace_white_65dp" />
 
     <android.support.design.widget.FloatingActionButton
