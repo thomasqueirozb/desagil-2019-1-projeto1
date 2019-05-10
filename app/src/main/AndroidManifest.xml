@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".DictionaryMorse"
+            android:label="@string/title_activity_dictionary_morse"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Dictionary"
             android:label="@string/title_activity_dictionary"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Contact"
             android:label="@string/title_activity_contact"

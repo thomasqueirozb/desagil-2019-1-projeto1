@@ -109,4 +109,5 @@
     <string name="mslash">-..-.</string>
 
     <string name="backdic">Go Back</string>
+    <string name="title_activity_dictionary_morse">DictionaryMorse</string>
 </resources>

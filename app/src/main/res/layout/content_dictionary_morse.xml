@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Dictionary"
-    tools:showIn="@layout/activity_dictionary">
+    tools:context=".DictionaryMorse"
+    tools:showIn="@layout/activity_dictionary_morse">
 
     <ListView
         android:id="@+id/SCHEDULE"
@@ -31,4 +31,3 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
-

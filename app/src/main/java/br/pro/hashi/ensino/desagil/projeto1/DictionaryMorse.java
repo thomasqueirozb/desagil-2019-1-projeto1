@@ -1,29 +1,30 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
-import android.content.Intent;
+import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
-public class Dictionary extends AppCompatActivity {
+public class DictionaryMorse extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dictionary);
+        setContentView(R.layout.activity_dictionary_morse);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,10 +40,10 @@ public class Dictionary extends AppCompatActivity {
 
         Translator translator = new Translator();
 
-        List<String> messages = Arrays.asList("a", "b", "c", "d", "e", "f",
-                "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-                "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5",
-                "6", "7", "8", "9");
+        List<String> messages = Arrays.asList("e", "t", "i", "a", "n", "m",
+               "s", "u", "r", "w", "d", "k", "g", "o", "h", "v", "f", "l", "p",
+                "j", "b", "x", "c", "y", "z", "q", "5", "4", "3", "2", "1", "6",
+               "7", "8", "9", "0");
 
 
         ListView list = (ListView) findViewById(R.id.SCHEDULE);
@@ -51,8 +52,8 @@ public class Dictionary extends AppCompatActivity {
 
         for(String element: messages) {
             HashMap<String, String> map = new HashMap<String, String>();
-            map.put("train", element);
-            map.put("from", translator.charToMorse(element.toCharArray()[0]));
+            map.put("train", translator.charToMorse(element.toCharArray()[0]));
+            map.put("from", element);
             mylist.add(map);
         }
 
@@ -60,14 +61,8 @@ public class Dictionary extends AppCompatActivity {
                 new String[] {"train", "from"}, new int[] {R.id.TRAIN_CELL, R.id.FROM_CELL});
         list.setAdapter(mSchedule);
 
-    }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        hideNavigationBar();
-    }
-
+   }
     private void hideNavigationBar(){
         this.getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_FULLSCREEN |
@@ -77,11 +72,6 @@ public class Dictionary extends AppCompatActivity {
                         View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         );
-    }
-
-    public void checkDictionary(View view){
-        Intent intent = new Intent(Dictionary.this, Dictionary.class);
-        startActivity(intent);
     }
 
 }

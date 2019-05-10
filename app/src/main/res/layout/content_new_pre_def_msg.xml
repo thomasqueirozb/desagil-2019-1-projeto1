@@ -121,4 +121,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_book_white_65dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buttonMorse"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="508dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal_background" />
+
 </android.support.constraint.ConstraintLayout>
