@@ -108,7 +108,6 @@ public class composeSMS extends AppCompatActivity {
             FloatingActionButton backspaceButton = findViewById(R.id.backspaceButton);
             FloatingActionButton sendButton = findViewById(R.id.sendButton);
             FloatingActionButton dictionaryButton = findViewById(R.id.dictionaryButton);
-            FloatingActionButton morseDictionary = findViewById(R.id.floatingActionButton4);
 
             TextView screenMsg = findViewById(R.id.mensagemTela);
             TextView morseMsg = findViewById(R.id.morseMsg);
@@ -131,11 +130,12 @@ public class composeSMS extends AppCompatActivity {
                 }
             });
 
-            morseDictionary.setOnClickListener(new View.OnClickListener() {
+            dictionaryButton.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void onClick(View view) {
+                public boolean onLongClick(View view) {
                     Intent intent = new Intent(composeSMS.this, DictionaryMorse.class);
                     startActivity(intent);
+                    return true;
                 }
             });
 
